@@ -1,8 +1,17 @@
 # 3DPrinterConfig
 My 3D Printers Configuration backup:
 
-Using fallowing firmmware: 
+Using fallowing firmware:
 
-[![Klipper](docs/images/klipper-logo-small.png)](https://www.klipper3d.org/)
+ Firmware|Example Boards
+  --------|------
+  [[Klipper]](https://www.klipper3d.org/) | <img align="left" width=40 src="docs/images/klipper-logo-small.png" />
+  [[Marlin]](https://marlinfw.org/) | <img align="left" width=40 src="docs/images/marlin-logo-small.png" />
+  
+  
+ 
 
-[![Marlin](docs/images/marlin-logo-small.png)](https://marlinfw.org/)
+
+
+
+
