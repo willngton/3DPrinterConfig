@@ -1,4 +1,8 @@
 # 3DPrinterConfig
-My 3D Printers Configuration backup - Marlin and Klipper 
+My 3D Printers Configuration backup:
 
-[![Klipper](docs/img/klipper-logo-small.png)](https://www.klipper3d.org/)
+Using fallowing firmmware: 
+
+[![Klipper](docs/images/klipper-logo-small.png)](https://www.klipper3d.org/)
+
+[![Marlin](docs/images/marlin-logo-small.png)](https://marlinfw.org/)
