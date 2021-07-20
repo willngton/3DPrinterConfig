@@ -7,6 +7,8 @@ Printer|More Info
 --------|------
 <img align="left" width=60 src="docs/images/mpsm-logo.png" />| [MPSM Wiki](https://mpselectmini.com/) 
 <img align="left" width=60 src="docs/images/mpmd-logo.png" />| [MPMD Wiki](https://mpminidelta.com/) 
+<img align="left" width=60 src="docs/images/bluer-logo.png" />| [TTBluer]) 
+<img align="left" width=60 src="docs/images/q5-logo.jpg" />| [Q5]) 
 
 
 Using fallowing firmware:
