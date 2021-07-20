@@ -1,4 +1,4 @@
-<img align="left" width=100 src="../docs/images/mpmd-logo.png" />
+<img align="left" width=100 src="../docs/images/mpsm-logo.png" />
 
 
 ## Monoprice Select Mini V2:
