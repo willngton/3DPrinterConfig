@@ -2,13 +2,10 @@
 My 3D Printers Configuration backup:
 
 ## Printer List:
-
-Printer|More Info
---------|------
-<img align="left" width=60 src="docs/images/mpsm-logo.png" />| [MPSM Wiki](https://mpselectmini.com/) 
-<img align="left" width=60 src="docs/images/mpmd-logo.png" />| [MPMD Wiki](https://mpminidelta.com/) 
-<img align="left" width=60 src="docs/images/bluer-logo.png" />| [TTBluer]) 
-<img align="left" width=60 src="docs/images/q5-logo.jpg" />| [Q5]) 
+01 | 02 | 03 | 04 
+--------|------|------|------
+<img align="left" width=60 src="docs/images/mpsm-logo.png" /> | <img align="left" width=60 src="docs/images/mpmd-logo.png" /> | <img align="left" width=60 src="docs/images/bluer-logo.png" /> | <img align="left" width=60 src="docs/images/q5-logo.jpg" />
+[MPSM Wiki](https://mpselectmini.com/)| [MPMD Wiki](https://mpminidelta.com/)| [TTBluer]) | [Q5]) 
 
 
 Using fallowing firmware:
