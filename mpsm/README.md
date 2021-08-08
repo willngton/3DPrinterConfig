@@ -12,6 +12,6 @@
   - Raspberry Pi ZeroW powered by MKS 5v pin and using PI UART.
   - Running Klipper
 
- <img align="left" width=300 src="../docs/images/mpsm_klipper_ago2021_01.jpg" />
+ <img align="left" width=300 src="../docs/images/mpsm_klipper_ago2021.jpg" />
 
 
