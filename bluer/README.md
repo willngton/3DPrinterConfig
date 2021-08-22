@@ -4,7 +4,6 @@
 
 ### Machine Configuration 
   - MKS Robin Nano V2
-  - MKS TFT3.5 Touch Screen 
   - MKS TMC 2226
   - FYSETC MINI PANEL 12864 V2.1 
   - BTT B1 Dual Z Kit
