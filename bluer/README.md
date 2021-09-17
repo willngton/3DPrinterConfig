@@ -8,6 +8,7 @@
   - FYSETC MINI PANEL 12864 V2.1 
   - BTT B1 Dual Z Kit
   - Internal FAN changed to Noctua 4020
+  - Fimware: Klipper 
  
 
 ## Two Trees Bluer V2 #02
@@ -16,3 +17,4 @@
   - MKS Robin Nano V1.3
   - Two Trees TMC 2208
   - Machine still in stock, no modification  
+  - Firmware: Two Threes - Stock
