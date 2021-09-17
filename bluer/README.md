@@ -1,6 +1,6 @@
 # Two Trees Bluer - V2
 
-## Two Trees Bluer V2 -#01
+## Two Trees Bluer V2 #01
 
 ### Machine Configuration 
   - MKS Robin Nano V2
@@ -10,7 +10,7 @@
   - Internal FAN changed to Noctua 4020
  
 
-## Two Trees Bluer V2 -#02
+## Two Trees Bluer V2 #02
 
 ### Machine Configuration 
   - MKS Robin Nano V1.3
