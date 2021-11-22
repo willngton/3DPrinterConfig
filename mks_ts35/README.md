@@ -12,7 +12,7 @@ MKS TS35 Guide for KlipperScreen connected to a raspberry pi via SPI : @willngto
 
 PINOUT | 
 --------|
-<img align="left" width=900 src="../docs/images/mks_ts35_pinout_klipperscreen.png"/> |
+<img align="left" width=912 src="../docs/images/mks_ts35_pinout_klipperscreen.png"/> |
 
 
 
