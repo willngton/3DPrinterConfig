@@ -8,6 +8,13 @@ My 3D Printers Configuration backup:
 [MPSM Wiki](https://mpselectmini.com/)| [MPMD Wiki](https://mpminidelta.com/)| [TTBluer]) | [Q5]) 
 
 
+
+## Guide:
+[[MKS TS35 KlipperScreem]](https://github.com/willngton/3DPrinterConfig/tree/main/mks_ts35) | <img align="left" width=40 src="docs/images/mks_ts35.png" />
+
+
+
+
 Using fallowing firmware:
 
 Firmware|Example Boards
