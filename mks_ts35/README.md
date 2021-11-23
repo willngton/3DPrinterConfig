@@ -6,6 +6,10 @@ MKS TS35 Guide for KlipperScreen connected to a raspberry pi via SPI : @willngto
 
 > Note: Considering that you already have installed: Klipper + KlipperScreen using KIAUH in a clean Raspbian Lite.
 
+#### You could try the automated install script created by user Odair Gonnçalves from Agraber I30 Group
+> https://github.com/willngton/3DPrinterConfig/blob/main/mks_ts35/enable-mks-ts35-raspberry-pi_final.sh
+
+
 
 * 1 MKS TS35 Wiring to Raspberry PI (one may connect BEEP pin to any free gpio on PI for M300)
 
@@ -101,4 +105,16 @@ sudo cp tinylcd25.dtbo.1 /boot/overlays/tinylcd35.dtbo
 > https://forums.raspberrypi.com/viewtopic.php?t=143581
 
 > https://forums.raspberrypi.com/viewtopic.php?t=281695
+
+
+PI3 | 
+--------|
+<img align="left" width=912 src="../docs/images/mks_ts35_001.png"/> |
+
+
+PIZero2 | 
+--------|
+<img align="left" width=912 src="../docs/images/mks_ts35_002.png"/> |
+
+
 
