@@ -31,7 +31,7 @@ fi
 ### SUBSTITUI REPOSITORIO DO S.O. (PARA CONTORNAR LENTIDAO NOS REPOSITORIOS DO BRASIL)
 #
 
-if [ "$(grep "raspberrypi.org" "/etc/apt/sources.list")" ];
+if grep raspberrypi.org /etc/apt/sources.list;
 then
     echo -e "\nEfetuando backup de /etc/apt/sources.list ..."
     
@@ -59,7 +59,7 @@ done
 ### ADICIONA PARAMETROS DE CONFIGURACAO DO DISPLAY NO ARQUIVO DE BOOT
 #
 
-if [ ! "$(grep "MKS\ TS35" "/boot/config.txt")" ];
+if ! grep MKS\ TS35 /boot/config.txt;
 then
     echo -e "\nEfetuando backup de /boot/config.txt ..."
     
@@ -88,13 +88,13 @@ fi
 ### INSTALA GIT CLIENT, BAIXA FONTE, COMPILA E INSTALA O BINARIO FBCP
 #
 
-if [ ! $(which fbcp) ];
+if ! which fbcp;
 then
     echo -e "\nInstalando Git Client ..."
 
     apt install cmake git -qq -y
 
-    cd /home/pi/
+    cd /home/pi || exit
 
     echo -e "\nBaixando sources do pacote fbcp ..."
 
@@ -102,7 +102,7 @@ then
 
     mkdir ./rpi-fbcp/build
 
-    cd rpi-fbcp/build/
+    cd rpi-fbcp/build || exit
 
     echo -e "\nCompilando fbcp ..."
 
@@ -118,7 +118,12 @@ fi
 
 ### CONFIGURA INICIALIZACAO DO FBCP E XORG (DISPLAY E TOUCH)
 #
-if [ ! "$(grep "fbcp" "/etc/rc.local")" ];
+echo -e "\nInstalando pacote xserver-xorg-input-evdev ..."
+
+apt install xserver-xorg-input-evdev -qq -y
+
+
+if ! grep fbcp /etc/rc.local;
 then
     echo -e "\nEfetuando backup de /etc/rc.local ..."
     
@@ -292,15 +297,8 @@ EOF
 fi
 
 
-### TA QUASE...
-#
-echo -e "\nInstalando pacote xserver-xorg-input-evdev ..."
-
-apt install xserver-xorg-input-evdev -qq -y
-
-
 ### FIM
 #
 
-echo -e "\nInstalacao e configuracao finalizada! Reincie o sistema.\n"
+echo -e "\nInstalacao e configuracao finalizada! Reincie o sistema (e cruze os dedos rsrs).\n"
 
