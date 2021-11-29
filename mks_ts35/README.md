@@ -65,7 +65,7 @@ sudo install fbcp /usr/local/bin/fbcp
 Section "Device"
 Identifier "Allwinner A10/A13/A20 FBDEV"
 Driver "fbturbo"
-Option "fbdev" "/dev/fb1"
+Option "fbdev" "/dev/fb0"
 
 Option "SwapbuffersWait" "true"
 EndSection
