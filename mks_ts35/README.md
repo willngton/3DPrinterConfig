@@ -35,11 +35,12 @@ dtoverlay=tinylcd35,rotate=270,speed=48000000,touch,touchgpio=23 # MKS TS35
 ```
 * 3 Install rpi-fbcp for screen redirection.
 ```
+sudo apt-get install cmake
 cd ~
 sudo git clone https://github.com/tasanakorn/rpi-fbcp
 cd rpi-fbcp/
-sudo cmake ..
-sudo mkdir ./rpi-fbcp/build
+mkdir build
+cd build
 sudo cmake ..
 sudo make
 sudo install fbcp /usr/local/bin/fbcp
