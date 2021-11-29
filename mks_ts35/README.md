@@ -95,7 +95,7 @@ sudo apt-get install xserver-xorg-input-evdev
 
 Download and replace using the fallowing command
 ```
-sudo cp tinylcd25.dtbo.1 /boot/overlays/tinylcd35.dtbo
+sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
 ```
 
 * 9 Reboot your system
