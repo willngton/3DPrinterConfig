@@ -115,6 +115,9 @@ sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
 
 ### This is based on varius tutorials, if you found a better way to do it, please share.
 
+* 10 Troubleshooting
+> You can basically fallow the steps on KlipperScreen documentation: https://klipperscreen.readthedocs.io/en/latest/Troubleshooting/
+
 > https://forums.raspberrypi.com/viewtopic.php?t=143581
 
 > https://forums.raspberrypi.com/viewtopic.php?t=281695
