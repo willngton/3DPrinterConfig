@@ -132,9 +132,13 @@ PI3 |
 <img align="left" width=912 src="../docs/images/mks_ts35_001.png"/> |
 
 
-PIZero2 | 
---------|
-<img align="left" width=912 src="../docs/images/mks_ts35_002.png"/> |
+
+|<img align="left" width=150 src="../docs/images/klipper_screem_001.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_002.png"/>| <img align="left" width=150 src="../docs/images/klipper_screem_003.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_004.png"/> |<img align="left" width=150 src="../docs/images/klipper_screem_005.png"/>   |
+|---|---|---|---|---|
+|<img align="left" width=150 src="../docs/images/klipper_screem_006.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_007.png"/>| <img align="left" width=150 src="../docs/images/klipper_screem_008.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_009.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_010.png"/>|
+|<img align="left" width=150 src="../docs/images/klipper_screem_011.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_012.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_013.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_014.png"/>|<img align="left" width=150 src="../docs/images/klipper_screem_015.png"/>|
+
+
 
 
 
