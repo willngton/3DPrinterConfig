@@ -2,6 +2,10 @@
 
 ## Notes and guide on how to use MKS TS35 LCD with KlipperScreem
 
+Two Trees Bluer | 
+--------|
+<img align="left" width=912 src="../docs/images/two_tress_bluer_klipperinside.jpg"/> |
+
 MKS TS35 Guide for KlipperScreen connected to a raspberry pi via SPI : @willngton
 
 > Note: Considering that you already have installed: Klipper + KlipperScreen using KIAUH in a clean Raspbian Lite
@@ -131,6 +135,7 @@ PI3 |
 PIZero2 | 
 --------|
 <img align="left" width=912 src="../docs/images/mks_ts35_002.png"/> |
+
 
 
 
