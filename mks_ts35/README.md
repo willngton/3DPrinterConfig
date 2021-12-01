@@ -27,7 +27,7 @@ hdmi_mode=87
 display_rotate=0
 
 dtparam=spi=on
-dtoverlay=tinylcd35,rotate=270,speed=48000000,touch,touchgpio=23 # MKS TS35 
+dtoverlay=tinylcd35,rotate=270,speed=36000000,touch,touchgpio=23,fps=10 # MKS TS35 Rotated 270 (for fit on Two Trees Bluer)
 ```
 * 3 Install rpi-fbcp for screen redirection.
 ```
@@ -44,10 +44,16 @@ sudo install fbcp /usr/local/bin/fbcp
 
 * 4 Add  "fbcp &" to /etc/rc.local.
   > Use your favorite text editor and add "fbcp &" to your rd.local in order get it up at boot time.
-  
+
+* 5 Install xserver-xorg-input-evdev
+```
+sudo apt-get install xserver-xorg-input-evdev
+```
+
 ### Touch Screen Configuration, this will enable touch using ADS7846
 
-* 5 If does not exists, create a file on /usr/share/X11/xorg.conf.d/99-fbturbo.conf with the fallowing content.
+* 6 If does not exists, create a file on /usr/share/X11/xorg.conf.d/99-fbturbo.conf with the fallowing content, you may need to try /dev/fb0 or /dev/fb1 based on if you get output or not.
+
 ```
 # This is a minimal sample config file, which can be copied to
 # /etc/X11/xorg.conf in order to make the Xorg server pick up
@@ -59,30 +65,40 @@ sudo install fbcp /usr/local/bin/fbcp
 # configuration options for tuning the driver.
 
 Section "Device"
-Identifier "Allwinner A10/A13/A20 FBDEV"
-Driver "fbturbo"
-Option "fbdev" "/dev/fb0"
-
-Option "SwapbuffersWait" "true"
+        Identifier      "Allwinner A10/A13/A20 FBDEV"
+        Driver          "fbturbo"
+        Option          "fbdev" "/dev/fb0"
+        Option          "SwapbuffersWait" "true"
 EndSection
+
 ```
 
-* 6 If does not exists, create a file on - /etc/X11/xorg.conf.d/99-calibration.conf with the fallowing content.
+* 7 If does not exists, create a file on - /etc/X11/xorg.conf.d/99-calibration.conf with the fallowing content.
+
+> For Two Trees Bluer, diplay need to be installed rotated 270, therefore calibarion point should be.
 ```
 Section "InputClass"
-Identifier "calibration"
-MatchProduct "ADS7846 Touchscreen"
-Option "Calibration" "3936 227 268 3880"
-Option "SwapAxes" "1"
-Option "EmulateThirdButton" "1"
-Option "EmulateThirdButtonTimeout" "1000"
-Option "EmulateThirdButtonMoveThreshold" "300"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option  "Calibration"   "227 3936 3880 268"
+        Option  "SwapAxes"      "1"
+        Option "EmulateThirdButton" "1"
+        Option "EmulateThirdButtonTimeout" "1000"
+        Option "EmulateThirdButtonMoveThreshold" "300"
 EndSection
 ```
 
-* 7 Install xserver-xorg-input-evdev
+> For diplay rotated 270.
 ```
-sudo apt-get install xserver-xorg-input-evdev
+Section "InputClass"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option  "Calibration"   "3936 227 268 3880"
+        Option  "SwapAxes"      "1"
+        Option "EmulateThirdButton" "1"
+        Option "EmulateThirdButtonTimeout" "1000"
+        Option "EmulateThirdButtonMoveThreshold" "300"
+EndSection
 ```
 
 * 8 Replace tinylcd35 dtoverlay for the one found on:
