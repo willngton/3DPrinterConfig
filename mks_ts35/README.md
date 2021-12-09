@@ -56,6 +56,10 @@ sudo apt-get install xserver-xorg-input-evdev
 
 ### Touch Screen Configuration, this will enable touch using ADS7846
 
+### if you have issue with calibratoin of the screen due, here is a ellagant solution provided by user: achenakid 
+https://github.com/willngton/3DPrinterConfig/issues/1
+
+
 * 6 If does not exists, create a file on /usr/share/X11/xorg.conf.d/99-fbturbo.conf with the fallowing content, you may need to try /dev/fb0 or /dev/fb1 based on if you get output or not.
 
 ```
