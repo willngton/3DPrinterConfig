@@ -2,6 +2,8 @@
 
 ## Notes and guide on how to use MKS TS35 LCD with KlipperScreem
 
+### Tested with: MKS TS35 and MKS TS35-R V2.0
+
 Two Trees Bluer | 
 --------|
 <img align="left" width=912 src="../docs/images/two_tress_bluer_klipperinside.jpg"/> |
