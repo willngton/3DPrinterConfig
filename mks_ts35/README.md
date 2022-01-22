@@ -55,8 +55,54 @@ sudo install fbcp /usr/local/bin/fbcp
 ```
 sudo apt-get install xserver-xorg-input-evdev
 ```
+### Touch Screen Configuration - Semi-automated, this will enable touch using ADS7846
+> Manual process bellow was more based on try-error, fallowing Klipperscreem oficial guide here is a better way.
 
-### Touch Screen Configuration, this will enable touch using ADS7846
+- Install xinput-calibrator
+  ```
+  sudo apt install xinput-calibrator
+
+  ```
+
+
+- Run this command to get your device id:
+  ```
+  DISPLAY=:0 xinput_calibrator --list
+  
+  output should be something like this:
+  Device "ADS7846 Touchscreen" id=6
+  ```
+ - Using the ID of your display and put it in the following command:
+    ```
+     DISPLAY=:0 xinput_calibrator -v --device <id from last command>
+    ```
+  - Fallow instruction on the screen to calibrate, and save content on file (create one if does not exists:
+    ```
+     /etc/X11/xorg.conf.d/99-calibration.conf
+    ```
+    Calibration Screen
+    <img align="left" width=912 src="../docs/images/mks_ts35_calibration.png"/><br><br>
+    Calibration Result
+<img align="left" width=912 src="../docs/images/mks_ts35_calibration_result.png"/><br><br>
+    
+
+## Touchscreen touch rotation
+
+If your touchscreen isn't registering touches properly after the screen has been rotated, you will need to apply a transformation matrix. You can have the matrix be one of the following:
+
+  - 0°: 1 0 0 0 1 0 0 0 1
+  - 90° Clockwise: 0 -1 1 1 0 0 0 0 1
+  - 90° Counter-Clockwise: 0 1 0 -1 0 1 0 0 1
+  - 180°: -1 0 1 0 -1 1 0 0 1
+    
+### Find session _libinput touchscreen catchall_ on file: /usr/share/X11/xorg.conf.d/40-libinput.conf and add transformation matrix, reboot and touch should be calibrated.
+
+ <img align="left" width=940 src="../docs/images/mks_ts35_calibration_matrix.png"/>   
+    
+    
+> Old manual process only for reference 
+
+## (skip this if you installed fallowed process) Touch Screen Configuration - Manual Process, this will enable touch using ADS7846
 
 ### if you have issue with calibratoin of the screen due, here is a ellagant solution provided by user: achenakid 
 https://github.com/willngton/3DPrinterConfig/issues/1
