@@ -81,9 +81,11 @@ sudo apt-get install xserver-xorg-input-evdev
      /etc/X11/xorg.conf.d/99-calibration.conf
     ```
     Calibration Screen
-    <img align="left" width=912 src="../docs/images/mks_ts35_calibration.png"/><br><br>
+    <img align="left" width=912 src="../docs/images/mks_ts35_calibration.png"/>
+    
     Calibration Result
-<img align="left" width=912 src="../docs/images/mks_ts35_calibration_result.png"/><br><br>
+    <img align="left" width=912 src="../docs/images/mks_ts35_calibration_result.png"/>
+
     
 
 ## Touchscreen touch rotation
@@ -97,7 +99,7 @@ If your touchscreen isn't registering touches properly after the screen has been
     
 ### Find session _libinput touchscreen catchall_ on file: /usr/share/X11/xorg.conf.d/40-libinput.conf and add transformation matrix, reboot and touch should be calibrated.
 
- <img align="left" width=940 src="../docs/images/mks_ts35_calibration_matrix.png"/>   
+ <img align="left" width=950 src="../docs/images/mks_ts35_calibration_matrix.png"/>   
     
     
 > Old manual process only for reference 
