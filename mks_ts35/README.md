@@ -1,8 +1,9 @@
-# MKS TS35 KlippeScreem port!
+# MKS TS35 KlippeScreem port! (WIP) 
 
 ## Notes and guide on how to use MKS TS35 LCD with KlipperScreem
 
 ### Tested with: MKS TS35 and MKS TS35-R V2.0
+
 
 Two Trees Bluer | 
 --------|
@@ -11,7 +12,6 @@ Two Trees Bluer |
 MKS TS35 Guide for KlipperScreen connected to a raspberry pi via SPI : @willngton
 
 > Note: Considering that you already have installed: Klipper + KlipperScreen using KIAUH in a clean Raspbian Lite
-
 
 * 1 MKS TS35 Wiring to Raspberry PI (one may connect BEEP pin to any free gpio on PI for M300)
 
@@ -22,8 +22,14 @@ PINOUT |
 
 
 
-* 2 Add the fallowing lines on your /boot/config.txt, this will force screen size to match with TS35, enable SPI and tinylcd35 dtoverlay.
+* 2 Add the fallowing lines on your /boot/config.txt, this will force screen size to match with TS35, enable SPI and tinylcd35 dtoverlay:
+* You can compare your config.txt with the one here that is tested and working, some pre-build images (mainsailOS, fluiddOS) has sone options enable that prevent tiny35 from load, or make a backup and use the oen provides here for teste. 
+
 ```
+$sudo nano /boot/config.txt
+
+ * add bellow content to the end and salve (crt+x)
+
 ###### MKS TS35
 hdmi_force_hotplug=1
 hdmi_cvt=hdmi_cvt=400 300 60 1 0 0 0
@@ -41,20 +47,61 @@ sudo apt-get install cmake
 cd ~
 sudo git clone https://github.com/tasanakorn/rpi-fbcp
 cd rpi-fbcp/
-mkdir build
+sudo mkdir build
 cd build
 sudo cmake ..
 sudo make
 sudo install fbcp /usr/local/bin/fbcp
 ```
 
-* 4 Add  "fbcp &" to /etc/rc.local.
-  > Use your favorite text editor and add "fbcp &" to your rd.local in order get it up at boot time.
+* 4 Replace tinylcd35 dtoverlay for the one found on:
+>https://forums.raspberrypi.com/viewtopic.php?t=281695
 
-* 5 Install xserver-xorg-input-evdev
+>https://drive.google.com/file/d/1naCs1F-VGU9CJnzmOeAstpQY-9Bypno2/view?usp=sharing
+
+Download and replace using the fallowing command
+```
+sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
+```
+
+
+* 5 Add  "fbcp &" to /etc/rc.local or create a service entry
+  > Use your favorite text editor and add "fbcp &" to your rd.local in order get it up at boot time.
+```
+$sudo nano /etc/systemd/system/fbcp.service
+ 
+- add the content bellow to the file, note the it will only start after KlipperScreen.service
+
+[Unit]
+Description=fbcp
+After=KlipperScreen.service
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/local/bin/fbcp
+
+[Install]
+WantedBy=multi-user.target
+
+- Save (Ctrl + X) and close.
+
+- Enable services:
+
+$ sudo systemctl enable fbcp.service
+
+```
+
+PLEASE Reboot Host and connect back via ssh before next step.
+
+
+* 6 Install xserver-xorg-input-evdev
 ```
 sudo apt-get install xserver-xorg-input-evdev
 ```
+
 ### Touch Screen Configuration - Semi-automated, this will enable touch using ADS7846
 > Manual process bellow was more based on try-error, fallowing Klipperscreem oficial guide here is a better way.
 
@@ -63,7 +110,6 @@ sudo apt-get install xserver-xorg-input-evdev
   sudo apt install xinput-calibrator
 
   ```
-
 
 - Run this command to get your device id:
   ```
@@ -110,7 +156,7 @@ If your touchscreen isn't registering touches properly after the screen has been
 https://github.com/willngton/3DPrinterConfig/issues/1
 
 
-* 6 If does not exists, create a file on /usr/share/X11/xorg.conf.d/99-fbturbo.conf with the fallowing content, you may need to try /dev/fb0 or /dev/fb1 based on if you get output or not.
+* 7 If does not exists, create a file on /usr/share/X11/xorg.conf.d/99-fbturbo.conf with the fallowing content, you may need to try /dev/fb0 or /dev/fb1 based on if you get output or not.
 
 ```
 # This is a minimal sample config file, which can be copied to
@@ -131,7 +177,7 @@ EndSection
 
 ```
 
-* 7 If does not exists, create a file on - /etc/X11/xorg.conf.d/99-calibration.conf with the fallowing content.
+* 8 If does not exists, create a file on - /etc/X11/xorg.conf.d/99-calibration.conf with the fallowing content.
 
 > For Two Trees Bluer, diplay need to be installed rotated 270, therefore calibarion point should be.
 ```
@@ -157,16 +203,6 @@ Section "InputClass"
         Option "EmulateThirdButtonTimeout" "1000"
         Option "EmulateThirdButtonMoveThreshold" "300"
 EndSection
-```
-
-* 8 Replace tinylcd35 dtoverlay for the one found on:
->https://forums.raspberrypi.com/viewtopic.php?t=281695
-
->https://drive.google.com/file/d/1naCs1F-VGU9CJnzmOeAstpQY-9Bypno2/view?usp=sharing
-
-Download and replace using the fallowing command
-```
-sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
 ```
 
 * 9 Reboot your system
