@@ -24,6 +24,8 @@ PINOUT |
 
 * 2 Add the fallowing lines on your /boot/config.txt, this will force screen size to match with TS35, enable SPI and tinylcd35 dtoverlay:
 * You can compare your config.txt with the one here that is tested and working, some pre-build images (mainsailOS, fluiddOS) has sone options enable that prevent tiny35 from load, or make a backup and use the oen provides here for teste. 
+ Link for working config.txt :  https://github.com/willngton/3DPrinterConfig/edit/main/mks_ts35/config.txt
+
 
 ```
 $sudo nano /boot/config.txt
