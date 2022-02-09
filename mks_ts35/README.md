@@ -66,7 +66,6 @@ Download and replace using the fallowing command
 sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
 ```
 
-
 * 5 Add  "fbcp &" to /etc/rc.local or create a service entry
   > Use your favorite text editor and add "fbcp &" to your rd.local in order get it up at boot time.
 ```
@@ -128,13 +127,16 @@ sudo apt-get install xserver-xorg-input-evdev
     ```
      /etc/X11/xorg.conf.d/99-calibration.conf
     ```
-    Calibration Screen
-    <img align="left" width=912 src="../docs/images/mks_ts35_calibration.png"/>
-    
-    Calibration Result
-    <img align="left" width=912 src="../docs/images/mks_ts35_calibration_result.png"/>
 
+Calibration Screen | 
+--------|
+<img align="left" width=850 src="../docs/images/mks_ts35_calibration.png"/> |
+
+Calibration Result | 
+--------|
+<img align="left" width=850 src="../docs/images/mks_ts35_calibration_result.png"/>|
     
+
 
 ## Touchscreen touch rotation
 
