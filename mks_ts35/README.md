@@ -122,10 +122,14 @@ sudo apt-get install xserver-xorg-input-evdev
  - Using the ID of your display and put it in the following command:
     ```
      DISPLAY=:0 xinput_calibrator -v --device <id from last command>
+     
+    Example: $ DISPLAY=:0 xinput_calibrator -v --device 6
     ```
   - Fallow instruction on the screen to calibrate, and save content on file (create one if does not exists:
     ```
-     /etc/X11/xorg.conf.d/99-calibration.conf
+    $ sudo mkdir -p /etc/X11/xorg.conf.d/
+    $ sudo nano /etc/X11/xorg.conf.d/99-calibration.conf
+
     ```
 
 Calibration Screen | 
