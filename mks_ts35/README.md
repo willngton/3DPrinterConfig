@@ -145,7 +145,9 @@ Calibration Result |
 
 ## Touchscreen touch rotation
 
-If your touchscreen isn't registering touches properly after the screen has been rotated, you will need to apply a transformation matrix. You can have the matrix be one of the following:
+If your touchscreen isn't registering touches properly after the screen has been rotated, you will need to apply a transformation matrix.
+FluiddOS [40-libinput.conf](https://raw.githubusercontent.com/willngton/3DPrinterConfig/main/mks_ts35/40-libinput.conf).
+You can have the matrix be one of the following:
 
   - 0°: 1 0 0 0 1 0 0 0 1
   - 90° Clockwise: 0 -1 1 1 0 0 0 0 1
