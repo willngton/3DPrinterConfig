@@ -3,7 +3,7 @@
 ## Notes and guide on how to use MKS TS35 LCD with KlipperScreem
 ## Tested on fluiddOS, can't garantie same steps will work on another image, could not get it working fallowing step by step on mainsailOS
 
-### Tested with: MKS TS35 and MKS TS35-R V2.0
+### Validaded with: MKS TS35 and MKS TS35-R V2.0
 
 
 Two Trees Bluer | 
