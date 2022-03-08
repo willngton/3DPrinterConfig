@@ -1,7 +1,7 @@
 <img align="left" width=100 src="../docs/images/kp3s-logo.png" />
 
 
-## Kingroom KP3S 3.0:
+## Kingroom KP3S 3.0
 
 <br /><br />
 ### Machine Configuration 
