@@ -62,15 +62,16 @@ sudo install fbcp /usr/local/bin/fbcp
 
 >https://drive.google.com/file/d/1naCs1F-VGU9CJnzmOeAstpQY-9Bypno2/view?usp=sharing
 
-Download and replace using the fallowing command
+Download, put the file in klipper document by using WIN SCP. 
+Then replace using the following command (Use the link as tinylcd35.dtbo.2 in the forum instead of 1) 
 ```
-sudo cp tinylcd35.dtbo.1 /boot/overlays/tinylcd35.dtbo
+sudo cp tinylcd35.dtbo.2 /boot/overlays/tinylcd35.dtbo
 ```
 
 * 5 Add  "fbcp &" to /etc/rc.local or create a service entry
   > Use your favorite text editor and add "fbcp &" to your rd.local in order get it up at boot time.
 ```
-$sudo nano /etc/systemd/system/fbcp.service
+sudo nano /etc/systemd/system/fbcp.service
  
 - add the content bellow to the file, note the it will only start after KlipperScreen.service
 
@@ -92,17 +93,19 @@ WantedBy=multi-user.target
 
 - Enable services:
 
-$ sudo systemctl enable fbcp.service
+sudo systemctl enable fbcp.service
 
 ```
 
-PLEASE Reboot Host and connect back via ssh before next step.
+PLEASE Reboot Host and connect back via ssh before next step. (If you are using Pi Zero 2, you may need to unplug the cable and plug in again)
 
 
 * 6 Install xserver-xorg-input-evdev
 ```
 sudo apt-get install xserver-xorg-input-evdev
 ```
+sudo apt install xserver-xorg-video-fbdev 
+
 
 ### Touch Screen Configuration - Semi-automated, this will enable touch using ADS7846
 > Manual process bellow was more based on try-error, fallowing Klipperscreem oficial guide here is a better way.
@@ -154,7 +157,7 @@ You can have the matrix be one of the following:
   - 90° Counter-Clockwise: 0 1 0 -1 0 1 0 0 1
   - 180°: -1 0 1 0 -1 1 0 0 1
     
-### Find session _libinput touchscreen catchall_ on file: /usr/share/X11/xorg.conf.d/40-libinput.conf and add transformation matrix, reboot and touch should be calibrated.
+### Find session _libinput touchscreen catchall_ on file: sudo nano /usr/share/X11/xorg.conf.d/40-libinput.conf and add transformation matrix, reboot and touch should be calibrated.
 
  <img align="left" width=950 src="../docs/images/mks_ts35_calibration_matrix.png"/>   
     
