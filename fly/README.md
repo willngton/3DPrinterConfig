@@ -1,37 +1,38 @@
-<img align="left" width=100 src="../docs/images/kp3s-logo.png" />
+## Notes for Fly Board - Gemini 1 and 2
+### TFT Configuration 
 
-## Kingroom KP3S 3.0
+https://github.com/Mellow-3D/klipper-docs/blob/master/docs/advanced/screen.md
 
-<br /><br />
-### Machine Configuration 
-  - MKS TMC 2209 - Uart
-  - 3D Touch for autoleveling
-  - Running Klipper
-  - BMG Extruder
-
-### Klipper Firmware Build - STM32F103 and GD32F303 mcu
-  - Create fimware bin following bellow image
-```
-cd /home/pi/klipper
-make menu-config 
-```
-
-<p align="left">
-  <img src="../docs/images/kp3s_klipper_usb.png"  width=550 alt="Klipper KP3s" title="Klipper KP3s">
-</p>
+### Notes for dts
 
 ```
-make clean
-make
-```
-- Convert klipper bin using mks python script, from inside _/home/pi/klipper/_ folder.
-```
-./scripts/update_mks_robin.py out/klipper.bin out/Robin_nano.bin
-```
-  - Copy Robin_nano.bin to sd-card: You can move Robin_nano.bin from out folder to klipper_config and dowload using web interface, no need winscp, scp.. etc.
-  ```
-     mv /home/pi/klipper/out/klipper.bin out/Robin_nano.bin /home/pi/klipper_config/
-  ```
-  - Flash Board
-  - Happy Printing
+fly@flygemini:/boot$ cat armbianEnv.txt 
+verbosity=1
+bootlogo=false
+console=serial
+overlay_prefix=sun50i-h5
+overlays=usbhost2 usbhost3 FLY-TFT-V1
+param_spidev_spi_bus=0
+rootdev=UUID=e538b2aa-6c14-41dc-a04b-2e794cf3d04f
+rootfstype=ext4
+disp_mode=1920x1080p60
+usbstoragequirks=0x2537:0x1066:u,0x2537:0x1068:u
 
+```
+
+```
+fly@flygemini:/boot/dtb-5.10.85-sunxi64/allwinner$ dmesg | grep fb_ili9488
+[    7.388346] fb_ili9488: module is from the staging directory, the quality is unknown, you have been warned.
+[    7.390201] fb_ili9488 spi1.0: there is not valid maps for state default
+[    7.390326] fb_ili9488 spi1.0: fbtft_property_value: width = 320
+[    7.390336] fb_ili9488 spi1.0: fbtft_property_value: height = 480
+[    7.390478] fb_ili9488 spi1.0: fbtft_property_value: regwidth = 8
+[    7.390486] fb_ili9488 spi1.0: fbtft_property_value: buswidth = 8
+[    7.390497] fb_ili9488 spi1.0: fbtft_property_value: debug = 0
+[    7.390505] fb_ili9488 spi1.0: fbtft_property_value: rotate = 270
+[    7.390515] fb_ili9488 spi1.0: fbtft_property_value: fps = 60
+[    7.750570] graphics fb0: fb_ili9488 frame buffer, 480x320, 300 KiB video memory, 4 KiB buffer memory, fps=62, spi1.0 at 50 MHz
+[    7.791151] systemd[1]: Starting Load/Save Screen Backlight Brightness of backlight:fb_ili9488...
+[    8.038627] systemd[1]: Finished Load/Save Screen Backlight Brightness of backlight:fb_ili9488.
+
+```
