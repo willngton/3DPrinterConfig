@@ -1,0 +1,157 @@
+ly@flygemini:~$ dtc -I dtb -O dts /boot/dtb/allwinner/overlay/sun50i-h5-FLY-TFT-V1.dtbo
+<stdout>: Warning (unit_address_vs_reg): /fragment@2/__overlay__/spidev@0: node has a unit name, but no reg property
+<stdout>: Warning (unit_address_vs_reg): /fragment@2/__overlay__/spidev@1: node has a unit name, but no reg property
+<stdout>: Warning (unit_address_vs_reg): /__local_fixups__/fragment@3/__overlay__/fly-display@0: node has a unit name, but no reg property
+<stdout>: Warning (gpios_property): /fragment@2/__overlay__:cs-gpios: Could not get phandle node for (cell 2)
+<stdout>: Warning (gpios_property): /fragment@3/__overlay__/fly-display@0:reset-gpios: Could not get phandle node for (cell 1)
+<stdout>: Warning (gpios_property): /fragment@3/__overlay__/fly-display@0:dc-gpios: Could not get phandle node for (cell 1)
+<stdout>: Warning (gpios_property): /fragment@3/__overlay__/fly-display@0: Missing property '#gpio-cells' in node /fragment@1/__overlay__/spi1_cs_pins or bad phandle (referred from led-gpios[3])
+<stdout>: Warning (gpios_property): /fragment@3/__overlay__/xpt2046@1: Missing property '#gpio-cells' in node /fragment@1/__overlay__/spi1_cs_pins or bad phandle (referred from pendown-gpio[2])
+<stdout>: Warning (interrupts_property): /fragment@3/__overlay__/xpt2046@1:interrupt-parent: Invalid phandle
+<stdout>: Warning (interrupts_property): /fragment@3/__overlay__/xpt2046@1: Missing interrupt-parent
+/dts-v1/;
+
+/ {
+	compatible = "allwinner,sun50i-h5";
+
+	fragment@0 {
+		target-path = "/aliases";
+
+		__overlay__ {
+			spi1 = "/soc/spi@01c69000";
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			fly_display_pins {
+				pins = "PA0\0PG7\0PG6\0PA1";
+				function = <0x01 0x01 0x01 0x00>;
+				pull = <0x00 0x00 0x00 0x02>;
+				phandle = <0x02>;
+			};
+
+			spi1_cs_pins {
+				pins = "PA13\0PA19";
+				function = "gpio_out";
+				phandle = <0x01>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <0xffffffff 0x01>;
+			cs-gpios = <0xffffffff 0x00 0x0d 0x01 0xffffffff 0x00 0x13 0x01>;
+
+			spidev@0 {
+				status = "disabled";
+			};
+
+			spidev@1 {
+				status = "disabled";
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#address-cells = <0x01>;
+			#size-cells = <0x00>;
+
+			fly-display@0 {
+				compatible = "ilitek,ili9488";
+				reg = <0x00>;
+				pinctrl-names = "default";
+				pinctrl-0 = <0x02>;
+				spi-max-frequency = <0x2faf080>;
+				rotate = <0x10e>;
+				bgr;
+				width = <0x140>;
+				height = <0x1e0>;
+				fps = <0x3c>;
+				buswidth = <0x08>;
+				regwidth = <0x08>;
+				reset-gpios = <0xffffffff 0x06 0x06 0x01>;
+				dc-gpios = <0xffffffff 0x06 0x07 0x00>;
+				led-gpios = <0xffffffff 0x00 0x00 0x01>;
+				debug = <0x00>;
+				status = "okay";
+				phandle = <0x03>;
+			};
+
+			xpt2046@1 {
+				compatible = "ti,ads7846";
+				reg = <0x01>;
+				spi-max-frequency = <0x1e8480>;
+				interrupts = <0x00 0x01 0x02>;
+				interrupt-parent = <0xffffffff>;
+				pendown-gpio = <0xffffffff 0x00 0x01 0x00>;
+				ti,keep-vref-on = <0x01>;
+				ti,x-min = [00 c8];
+				ti,x-max = [0f 3c];
+				ti,y-min = [00 c8];
+				ti,y-max = [0f 3c];
+				ti,x-plate-ohms = [00 3c];
+				ti,pressure-max = [00 ff];
+				ti,swap-xy = <0x01>;
+				phandle = <0x04>;
+			};
+		};
+	};
+
+	__overrides__ {
+		speed = <0x03 0x7370692d 0x6d61782d 0x66726571 0x75656e63 0x793a3000>;
+		rotate = [00 00 00 03 72 6f 74 61 74 65 3a 30 00];
+		fps = [00 00 00 03 66 70 73 3a 30 00];
+		debug = <0x03 0x64656275 0x673a3000>;
+	};
+
+	__symbols__ {
+		fly_display_pins = "/fragment@1/__overlay__/fly_display_pins";
+		spi1_cs_pins = "/fragment@1/__overlay__/spi1_cs_pins";
+		flydisplay = "/fragment@3/__overlay__/fly-display@0";
+		xpt2046 = "/fragment@3/__overlay__/xpt2046@1";
+	};
+
+	__fixups__ {
+		pio = "/fragment@1:target:0\0/fragment@2/__overlay__:cs-gpios:0\0/fragment@2/__overlay__:cs-gpios:16\0/fragment@3/__overlay__/fly-display@0:reset-gpios:0\0/fragment@3/__overlay__/fly-display@0:dc-gpios:0\0/fragment@3/__overlay__/fly-display@0:led-gpios:0\0/fragment@3/__overlay__/xpt2046@1:interrupt-parent:0\0/fragment@3/__overlay__/xpt2046@1:pendown-gpio:0";
+		spi1 = "/fragment@2:target:0\0/fragment@3:target:0";
+		spi1_pins = "/fragment@2/__overlay__:pinctrl-0:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@2 {
+
+			__overlay__ {
+				pinctrl-0 = <0x04>;
+			};
+		};
+
+		fragment@3 {
+
+			__overlay__ {
+
+				fly-display@0 {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+
+		__overrides__ {
+			speed = <0x00>;
+			rotate = <0x00>;
+			fps = <0x00>;
+			debug = <0x00>;
+		};
+	};
+};
