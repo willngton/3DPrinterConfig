@@ -15,6 +15,11 @@ MKS TS35 Guide for KlipperScreen connected to a raspberry pi via SPI : @willngto
 > Note: Considering that you already have installed: Klipper + KlipperScreen using KIAUH in a clean Raspbian Lite
 
 * 1 MKS TS35 Wiring to Raspberry PI (one may connect BEEP pin to any free gpio on PI for M300)
+* Chipset is: 
+```
+MKS_TS35_V2_0
+ADS7843E  / ILI9341  - ST7796
+```
 
 
 PINOUT | 
