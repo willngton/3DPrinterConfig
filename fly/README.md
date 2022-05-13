@@ -41,3 +41,86 @@ fly@flygemini:/boot/dtb-5.10.85-sunxi64/allwinner$ dmesg | grep fb_ili9488
 fly@flygemini:~$ dmesg | grep touch
 [    7.369233] ads7846 spi1.1: touchscreen, irq 93
 ```
+
+```
+fly@flygemini:~$ cat /usr/share/X11/xorg.conf.d/99-calibration.conf 
+
+Section "InputClass"
+	Identifier	"calibration"
+	MatchProduct	"ADS7846 Touchscreen"
+	Option	"MinX"	"2071"
+	Option	"MaxX"	"65239"
+	Option	"MinY"	"529"
+	Option	"MaxY"	"63470"
+	Option	"SwapXY"	"0" # unless it was already set to 1
+	Option	"InvertX"	"0"  # unless it was already set
+	Option	"InvertY"	"0"  # unless it was already set
+EndSection
+
+```
+
+```
+fly@flygemini:~$ cat /usr/share/X11/xorg.conf.d/40-libinput.conf 
+# Match on all types of devices but joysticks
+#
+# If you want to configure your devices, do not copy this file.
+# Instead, use a config snippet that contains something like this:
+#
+# Section "InputClass"
+#   Identifier "something or other"
+#   MatchDriver "libinput"
+#
+#   MatchIsTouchpad "on"
+#   ... other Match directives ...
+#   Option "someoption" "value"
+# EndSection
+#
+# This applies the option any libinput device also matched by the other
+# directives. See the xorg.conf(5) man page for more info on
+# matching devices.
+
+Section "InputClass"
+        Identifier "libinput pointer catchall"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput keyboard catchall"
+        MatchIsKeyboard "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchscreen catchall"
+        MatchIsTouchscreen "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput tablet catchall"
+        MatchIsTablet "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+```
+
+
+```
+fly@flygemini:~$ cat /usr/share/X11/xorg.conf.d/99-fbdev.conf 
+
+Section "Monitor"
+    Identifier "FBTFT"
+    Option "fbdev" "/dev/fb0"
+EndSection
+```
