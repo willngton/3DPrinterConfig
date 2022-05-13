@@ -36,3 +36,8 @@ fly@flygemini:/boot/dtb-5.10.85-sunxi64/allwinner$ dmesg | grep fb_ili9488
 [    8.038627] systemd[1]: Finished Load/Save Screen Backlight Brightness of backlight:fb_ili9488.
 
 ```
+
+```
+fly@flygemini:~$ dmesg | grep touch
+[    7.369233] ads7846 spi1.1: touchscreen, irq 93
+```
