@@ -2,6 +2,9 @@
 
 ## Test Lab for Orange PI Zero 2
 
+### Software used 
+[[armbian]](https://www.armbian.com/orange-pi-zero-2) 
+
 <p align="left">
   <img src="images/orangepi_005.png"  width=500 alt="Orange Pi" title="Orange Pi">
 </p>
