@@ -17,4 +17,4 @@ Firmware|Example Boards
 
 
 ## Guide:
-[[MKS TS35 KlipperScreem]](https://github.com/willngton/3DPrinterConfig/tree/main/mks_ts35) | <img align="left" width=100 src="docs/images/mks_ts35.png" />
+[~MKS TS35 KlipperScreen~](https://github.com/willngton/3DPrinterConfig/tree/main/mks_ts35)
