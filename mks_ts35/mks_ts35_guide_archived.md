@@ -1,4 +1,8 @@
-# MKS TS35 KlippeScreem port! (WIP) 
+```
+### A member of community has update this guide, (I tested and is working fine), please check it [here](https://github.com/fbeltrao-br/mksts35).
+```
+
+## MKS TS35 KlippeScreem port! (WIP) 
 
 ## Notes and guide on how to use MKS TS35 LCD with KlipperScreen
 ## Tested only on [FluidPI 1.6.2](https://github.com/fluidd-core/FluiddPI/releases/tag/v1.16.2), can't garantie same steps will work on another image, could not get it working fallowing step by step on mainsailOS
